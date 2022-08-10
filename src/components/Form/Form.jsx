@@ -1,15 +1,15 @@
-import { addContact } from 'redux/contacts/contacts-slice';
-import { nanoid } from 'nanoid';
+import { addContact } from 'redux/contacts/contacts-operations';
+
 import styles from '../Form/Form.module.css';
 import { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux';
 export const Form = () => {
  
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setnumber] = useState('');
-
+console.log(contacts);
   const onChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'name':
@@ -32,9 +32,9 @@ export const Form = () => {
       alert('have');
       return;
     }
-    let id = nanoid();
+   
 
-    dispatch(addContact({ name, number, id }));
+    dispatch(addContact({ name, number }));
 
     setName('');
     setnumber('');

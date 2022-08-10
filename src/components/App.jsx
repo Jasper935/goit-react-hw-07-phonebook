@@ -3,7 +3,10 @@ import { Form } from '../components/Form/Form';
 import { Section } from './Section/Section';
 
 import { ContactsList } from './ContactsList/ContactsList';
+import { useSelector } from 'react-redux';
 export const App = () => {
+  const loader = useSelector(state => state.contacts.loading);
+  console.log(loader);
   return (
     <>
       <Section title={'PhoneBook'}>
@@ -11,7 +14,8 @@ export const App = () => {
       </Section>
       <Section title={'Contacts'}>
         <Filter />
-        <ContactsList />
+        <ContactsList/>
+        {loader&&<h2>Loading...</h2>}
       </Section>
     </>
   );

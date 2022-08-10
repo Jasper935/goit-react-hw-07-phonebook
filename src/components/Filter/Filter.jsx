@@ -1,5 +1,5 @@
 import styles from '../Filter/Filter.module.css';
-import { filterContact } from 'redux/contacts/contacts-slice';
+import { filterContacts} from 'redux/contacts/contacts-actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const Filter = () => {
@@ -7,7 +7,7 @@ export const Filter = () => {
   const dispatch = useDispatch();
 
   const onChange = evt => {
-    dispatch(filterContact(evt.target.value));
+    dispatch(filterContacts(evt.target.value));
   };
   return (
     <label className={styles.label}>
